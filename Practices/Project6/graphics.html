@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takis Greek Kitchen - Graphics</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff5ed;
+            text-align: center;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #c65a1c;
+        }
+
+        #printButton {
+            margin-top: 20px;
+        }
+
+        #logo {
+            margin-top: 20px;
+        }
+
+        #thumbs, #image {
+            width: 700px;
+            max-width: 95%;
+            text-align: center;
+            margin: 0 auto;
+            color: #000;
+            background-color: #fff;
+            border: 1px solid #d97921;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        #thumbs {
+            margin-top: 20px;
+        }
+
+        #thumbs img {
+            width: 100px;
+            height: 150px;
+            border: 1px solid #000;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #image {
+            min-height: 460px;
+            margin-top: 15px;
+        }
+
+        #theImage {
+            width: 267px;
+            height: 400px;
+            max-width: 100%;
+            object-fit: cover;
+        }
+
+        .instructions {
+            font-style: italic;
+        }
+
+        /* Two Column Background */
+        .backgroundContainer {
+            width: 900px;
+            max-width: 100%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .backgroundImage {
+            display: block;
+            width: 900px;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border: 1px solid #d97921;
+            box-sizing: border-box;
+        }
+    </style>
+
+    <script>
+        // Print Page button images
+        var PrintButton1 = new Image();
+        var PrintButton2 = new Image();
+
+        PrintButton1.src = "images/print1.jpg";
+        PrintButton2.src = "images/print2.jpg";
+
+        // Logo rollover images
+        var logo1 = new Image();
+        var logo2 = new Image();
+
+        logo1.src = "images/logo1.jpg";
+        logo2.src = "images/logo2.jpg";
+
+        // Fullsize food images
+        var imgArray = [
+            "image1lg.jpg",
+            "image2lg.jpg",
+            "image3lg.jpg",
+            "image4lg.jpg"
+        ];
+
+        // Image titles
+        var titleArray = [
+            "Food on the Grill",
+            "Chef Preparing Food",
+            "Fresh Ingredients",
+            "Fresh Salad"
+        ];
+
+        var imgPath = "images/fullsize/";
+
+        // Change large image and title
+        function swapImage(imgID) {
+            var theImage = document.getElementById("theImage");
+            var textDiv = document.getElementById("bottomText");
+
+            theImage.src = imgPath + imgArray[imgID];
+            theImage.alt = titleArray[imgID];
+            textDiv.textContent = titleArray[imgID];
+        }
+
+        // Preload gallery images
+        function preloadImages() {
+            for (var i = 0; i < imgArray.length; i++) {
+                var tmpImg = new Image();
+                tmpImg.src = imgPath + imgArray[i];
+            }
+        }
+
+        // Print Page rollover
+        function swapPrint(imageFile) {
+            document.getElementById("print").src =
+                "images/" + imageFile;
+        }
+
+        // Logo rollover
+        function swapLogo(imageFile) {
+            document.getElementById("logoImage").src =
+                "images/" + imageFile;
+        }
+    </script>
+
+</head>
+
+<body onload="preloadImages()">
+
+    <h1>Takis Greek Kitchen</h1>
+
+    <!-- Print Page Button -->
+    <div id="printButton">
+
+        <a href="#"
+           onclick="window.print(); return false;"
+           onmouseover="swapPrint('print2.jpg');"
+           onmouseout="swapPrint('print1.jpg');">
+
+            <img src="images/print1.jpg"
+                 id="print"
+                 width="200"
+                 height="50"
+                 alt="Print Page">
+
+        </a>
+
+    </div>
+
+    <!-- Logo Rollover -->
+    <div id="logo">
+
+        <a href="#"
+           onclick="return false;"
+           onmouseover="swapLogo('logo2.jpg');"
+           onmouseout="swapLogo('logo1.jpg');">
+
+            <img src="images/logo1.jpg"
+                 id="logoImage"
+                 width="300"
+                 height="150"
+                 alt="Takis Greek Kitchen Logo">
+
+        </a>
+
+    </div>
+
+    <br>
+
+    <h2>Our Food Gallery</h2>
+
+    <p class="instructions">
+        Hover over the small images to see a larger version.
+    </p>
+
+    <!-- Food Thumbnails -->
+    <div id="thumbs">
+
+        <img src="images/thumbnails/image1sm.jpg"
+             alt="Food on the Grill"
+             width="100"
+             height="150"
+             onmouseover="swapImage(0);">
+
+        <img src="images/thumbnails/image2sm.jpg"
+             alt="Chef Preparing Food"
+             width="100"
+             height="150"
+             onmouseover="swapImage(1);">
+
+        <img src="images/thumbnails/image3sm.jpg"
+             alt="Fresh Ingredients"
+             width="100"
+             height="150"
+             onmouseover="swapImage(2);">
+
+        <img src="images/thumbnails/image4sm.jpg"
+             alt="Fresh Salad"
+             width="100"
+             height="150"
+             onmouseover="swapImage(3);">
+
+    </div>
+
+    <!-- Large Food Image -->
+    <div id="image">
+
+        <img id="theImage"
+             src="images/fullsize/image1lg.jpg"
+             width="267"
+             height="400"
+             alt="Food on the Grill">
+
+        <h3 id="bottomText">
+            Food on the Grill
+        </h3>
+
+    </div>
+
+    <br>
+
+    <!-- Two Column Background -->
+    <h2>Two Column Background Design</h2>
+
+    <div class="backgroundContainer">
+
+        <img src="images/2colback.jpg"
+             class="backgroundImage"
+             width="900"
+             height="150"
+             alt="Two column orange background for Takis Greek Kitchen">
+
+    </div>
+
+</body>
+</html>
